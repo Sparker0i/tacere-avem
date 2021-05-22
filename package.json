@@ -1,0 +1,26 @@
+{
+    "name": "tacere-avem",
+    "version": "1.0.0",
+    "description": "A place to enjoy a quiet Twitter",
+    "main": "index.js",
+    "scripts": {
+        "start": "node $npm_package_main",
+        "node": "node",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Sparker0i/tacere-avem.git"
+    },
+    "keywords": [],
+    "author": "Aaditya Menon",
+    "license": "ISC",
+    "homepage": "https://github.com/Sparker0i/tacere-avem",
+    "dependencies": {
+        "cookie-parser": "^1.4.4",
+        "express": "^4.17.1",
+        "express-session": "^1.17.0",
+        "oauth": "^0.9.15"
+    },
+    "devDependencies": {}
+}
