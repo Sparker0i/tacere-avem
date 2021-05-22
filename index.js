@@ -34,6 +34,8 @@ async function main () {
       return res.send(TEMPLATE.replace('CONTENT', `
         <h1>Hello ${req.cookies.twitter_screen_name}</h1>
         <br>
+        <a href="/twitter/search">Search for Some tweets</a>
+        <br>
         <a href="/twitter/logout">logout</a>
       `))
     }
@@ -48,14 +50,13 @@ async function main () {
     req.session.destroy(() => res.redirect('/'))
   }
 
-  app.get('/twitter/post', async(req, res, next) => {
+  app.get('/twitter/search', async(req, res, next) => {
     var authToken =  req.session.oauthAccessToken
     var authSecret = req.session.oauthAccessTokenSecret
     const tweetDetails = await postTweet({ authToken, authSecret })
     res.send(tweetDetails)
   })
 
-  app.get('/twitter/authenticate', twitter('authenticate'))
   app.get('/twitter/authorize', twitter('authorize'))
   function twitter (method = 'authorize') {
     return async (req, res) => {
