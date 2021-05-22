@@ -14,7 +14,14 @@ const oauthConsumer = new oauth.OAuth(
 module.exports = {
   oauthGetUserById,
   getOAuthAccessTokenWith,
-  getOAuthRequestToken
+  getOAuthRequestToken,
+  postTweet
+}
+
+async function postTweet({ oauthAccessToken, oauthAccessTokenSecret }  = {}) {
+  return promisify(oauthConsumer.get.bind(oauthConsumer))(`https://api.twitter.com/1.1/search/tweets.json?q=ModiHataoDeshBachao`, oauthAccessToken, oauthAccessTokenSecret)
+    .then(body => JSON.parse(body))
+    .catch(err => console.log(err))
 }
 
 async function oauthGetUserById (userId, { oauthAccessToken, oauthAccessTokenSecret } = {}) {

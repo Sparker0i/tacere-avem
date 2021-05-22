@@ -48,6 +48,13 @@ async function main () {
     req.session.destroy(() => res.redirect('/'))
   }
 
+  app.get('/twitter/post', async(req, res, next) => {
+    var authToken =  req.session.oauthAccessToken
+    var authSecret = req.session.oauthAccessTokenSecret
+    const tweetDetails = await postTweet({ authToken, authSecret })
+    res.send(tweetDetails)
+  })
+
   app.get('/twitter/authenticate', twitter('authenticate'))
   app.get('/twitter/authorize', twitter('authorize'))
   function twitter (method = 'authorize') {
