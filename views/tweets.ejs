@@ -17,11 +17,13 @@
 </style>
 <table>
     <tr>
+        <th>User</th>
         <th>Data</th>
     </tr>
-    <% for (var i = 0; i < tweets.statuses.length; i++) { %>
+    <% tweets.statuses.forEach(function(tweet) {%>
         <tr>
-          <td><%= tweets.statuses[i].text %></td>
-        </tr>    
-    <% } %>
+            <td><%= "@" + tweet.user.screen_name %></td>
+            <td><%= tweet.text %></td>
+        </tr> 
+    <% }); %>
 </table>
